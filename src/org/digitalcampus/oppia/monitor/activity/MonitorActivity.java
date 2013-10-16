@@ -51,6 +51,15 @@ public class MonitorActivity extends AppActivity implements OnSharedPreferenceCh
 	}
 
 	@Override
+	public void onStart() {
+		super.onStart();
+		if (!OppiaMonitor.isLoggedIn(this)) {
+			startActivity(new Intent(MonitorActivity.this, LoginActivity.class));
+			return;
+		}
+	}
+	
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);

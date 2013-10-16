@@ -17,12 +17,31 @@
 
 package org.digitalcampus.oppia.monitor.application;
 
+import org.digitalcampus.oppia.monitor.R;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class OppiaMonitor extends Application {
 
 	public static final String TAG = OppiaMonitor.class.getSimpleName();
 	public static final String BUGSENSE_API_KEY = "9622b59e";
+	
+	public static final String USER_AGENT = "OppiaMobile Monitor Android: ";
 
+	public static final String OPPIAMOBILE_API = "api/v1/";
+	public static final String LOGIN_PATH = OPPIAMOBILE_API + "user/";
+	
+	public static boolean isLoggedIn(Activity act) {
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(act.getBaseContext());
+		String username = prefs.getString(act.getString(R.string.prefs_username), "");
+		String apiKey = prefs.getString(act.getString(R.string.prefs_api_key), "");
+		if (username.trim().equals("") || apiKey.trim().equals("")) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

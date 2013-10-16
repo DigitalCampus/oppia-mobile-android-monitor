@@ -31,6 +31,9 @@
             android:name=".activity.PrefsActivity"
             android:label="@string/title_prefs"
             android:theme="@style/AppTheme.Light" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_login" />
     </application>
 
 </manifest>
